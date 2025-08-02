@@ -78,17 +78,41 @@ Frontend (app.js)   <---   Backend (server.py)   <---   External API
 **Step 6: The Grand Reveal**
 The `app.js` script, overjoyed, receives the JSON data. It quickly gets to work, creating new HTML elements (`<p>` tags) and filling them with the user's name and email. It then replaces the "Loading..." message with the beautiful, formatted data. The audience applauds.
 
-## 4. How to Wield This Magical Power (Running the Project)
+## 4. How to Run This Project (The Docker Way)
 
-1.  **Awaken the Backend:**
-    *   Navigate your terminal to `api-visualizer/backend`.
-    *   Chant the sacred words: `python server.py`.
-    *   The backend is now listening on port 5001.
+This project is fully containerized with Docker, which means you don't need to install Python, Flask, or Nginx on your machine. You only need Docker Desktop.
 
-2.  **Unveil the Frontend:**
-    *   Find the `api-visualizer/frontend/index.html` file.
-    *   Double-click it to open it in your browser of choice.
-    *   Behold the data in all its glory!
+### Prerequisites
+
+*   [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running.
+*   A terminal or command prompt.
+
+### Running the Application
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/mrunalruikar/api-visualizer.git
+    cd api-visualizer
+    ```
+
+2.  **Build and run the containers:**
+    From the root of the project directory (the one containing `docker-compose.yml`), run the following command:
+    ```bash
+    docker compose up --build
+    ```
+    This command will:
+    *   Build the Docker images for both the `frontend` and `backend` services.
+    *   Start the containers in the correct order.
+    *   Show you a combined log of both services.
+
+3.  **View the application:**
+    Once the build is complete and the logs are running, open your web browser and navigate to:
+    [**http://localhost:8080**](http://localhost:8080)
+
+    You should see the list of users, served entirely by Docker containers.
+
+4.  **Stopping the application:**
+    To stop the application, go back to your terminal and press `Ctrl + C`.
 
 ## 5. Potential Upgrades (The Sequel?)
 
