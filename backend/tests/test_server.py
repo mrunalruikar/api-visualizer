@@ -23,7 +23,7 @@ def test_get_data_success(client):
     ]
     mock_response.raise_for_status.return_value = None
     
-    with patch('backend.server.requests.get', return_value=mock_response):
+    with patch('server.requests.get', return_value=mock_response):
         response = client.get('/api/data')
         
         assert response.status_code == 200
@@ -34,7 +34,7 @@ def test_get_data_success(client):
 
 def test_get_data_external_api_failure(client):
     """Test handling of external API failure."""
-    with patch('backend.server.requests.get') as mock_get:
+    with patch('server.requests.get') as mock_get:
         mock_get.side_effect = Exception("Connection error")
         
         response = client.get('/api/data')
@@ -49,7 +49,7 @@ def test_get_data_http_error(client):
     mock_response = Mock()
     mock_response.raise_for_status.side_effect = Exception("404 Not Found")
     
-    with patch('backend.server.requests.get', return_value=mock_response):
+    with patch('server.requests.get', return_value=mock_response):
         response = client.get('/api/data')
         
         assert response.status_code == 500
