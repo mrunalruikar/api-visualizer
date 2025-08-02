@@ -1,3 +1,6 @@
 Flask
 requests
 Flask-Cors
+pytest
+pytest-flask
+pytest-mock
