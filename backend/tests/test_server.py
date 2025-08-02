@@ -1,7 +1,10 @@
 import pytest
 import json
 from unittest.mock import patch, Mock
-from backend.server import app
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from server import app
 
 @pytest.fixture
 def client():
